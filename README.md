@@ -58,6 +58,13 @@ vue-e164 add `phone` filter, and can be used as any other vue.js filter.
 </template>
 ```
 
+If you need to use different options for each element, from `v0.0.2` you can use directive `v-phone`:
+```
+<template>
+  <p v-phone="{ plus: true, brackets: false, space: false }">{{ string }}</p>
+</template>
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
