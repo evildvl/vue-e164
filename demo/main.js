@@ -11,7 +11,11 @@ const vueE164 = process.env.NODE_ENV === 'development'
 Vue.config.productionTip = false
 
 // Using plugin
-Vue.use(vueE164)
+Vue.use(vueE164, {
+  plus: true,
+  brackets: false,
+  space: false
+})
 
 /* eslint-disable no-new */
 new Vue({

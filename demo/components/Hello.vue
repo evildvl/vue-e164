@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2>welcome</h2>
-    <h1>{{ msg }}</h1>
+    <h1>{{ phone | phone }}</h1>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'generator-vue-plugin'
+      phone: '1 123 456 78 90'
     }
   }
 }
