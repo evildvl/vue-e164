@@ -1,7 +1,7 @@
 # vue-e164
 [![Pepper](https://pepper.ink/static/badge.svg)](https://pepper.ink)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 > Vue.js filter for phone formatting with E.164 support
 
 ### Setup
