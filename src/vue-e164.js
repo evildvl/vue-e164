@@ -1,3 +1,4 @@
+/* @flow */
 /**
   * vue-e164
   * (c) 2018 Stanislav Mihaylov
@@ -6,17 +7,17 @@
 
 const vueE164 = {}
 
-vueE164.install = function (Vue, options) {
-  function standart (string) {
-    let newString = string.match(/[0-9]{0,14}/g)
+vueE164.install = function (Vue: any, options: {plus: boolean, brackets: boolean, space: boolean}) {
+  function standart (string: string): string {
+    let newString: any = string.match(/[0-9]{0,14}/g)
     if (newString === null) {
       return ''
     }
     return `+${newString.join('').substring(0, 15)}`
   }
-  function filter (value, _options) {
+  function filter (value: string, _options: {plus: boolean, brackets: boolean, space: boolean}) {
     if (!value) return ''
-    let e164 = standart(value)
+    let e164: string = standart(value)
     if (_options.plus && !_options.brackets && !_options.space) {
       return e164
     } else if (!_options.plus && !_options.brackets && !_options.space) {
@@ -37,7 +38,7 @@ vueE164.install = function (Vue, options) {
       return ''
     }
   }
-  Vue.filter('phone', function (value) {
+  Vue.filter('phone', function (value: string) :string {
     return filter(value, options)
   })
   Vue.directive('phone', function (el, binding) {
