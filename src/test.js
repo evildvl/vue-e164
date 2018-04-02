@@ -108,18 +108,41 @@ const tests = [
   }
 ]
 
-describe('Using different options', () => {
-  tests.forEach((item) => {
-    it(`Should return value in correct pattern: ${item.pattern}`, () => {
-      assert.equal(filter('79999757065', item), item.answer)
+let testPhones = [
+    '79999757065',
+    '7-999-975-7065',
+    '7-999-975-70-65',
+    '7-(999)-975-70-65',
+    '7(999)975-70-65',
+    '7 999 975 70 65',
+    '7 (999) 975 70 65',
+    '+79999757065',
+    '+7-999-975-7065',
+    '+7-999-975-70-65',
+    '+7-(999)-975-70-65',
+    '+7(999)975-70-65',
+    '+7 999 975 70 65',
+    '7 (999) 975 70 65'
+]
+
+testPhones.forEach((phone) => {
+    describe(`Test different phone numbers : ${phone}`, () => {
+        describe(`Using different options: `, () => {
+            tests.forEach((item) => {
+                it(`Should return value in correct pattern: ${item.pattern}`, () => {
+                    assert.equal(filter(phone, item), item.answer)
+                })
+            })
+
+        })
     })
-  })
-  it('Should return empty string for empty string', () => {
-      assert.equal(filter('', {
-        plus: true,
-        brackets: false,
-        space: true,
-        dash: false
-      }), '')
-  })
+    it('Should return empty string for empty string', () => {
+        assert.equal(filter('', {
+            plus: true,
+            brackets: false,
+            space: true,
+            dash: false
+        }), '')
+    })
 })
+

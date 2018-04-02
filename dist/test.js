@@ -97,10 +97,16 @@ var tests = [{
   pattern: '+ _ -'
 }];
 
-describe('Using different options', function () {
-  tests.forEach(function (item) {
-    it('Should return value in correct pattern: ' + item.pattern, function () {
-      assert.equal((0, _vueE.filter)('79999757065', item), item.answer);
+var testPhones = ['79999757065', '7-999-975-7065', '7-999-975-70-65', '7-(999)-975-70-65', '7(999)975-70-65', '7 999 975 70 65', '7 (999) 975 70 65', '+79999757065', '+7-999-975-7065', '+7-999-975-70-65', '+7-(999)-975-70-65', '+7(999)975-70-65', '+7 999 975 70 65', '7 (999) 975 70 65'];
+
+testPhones.forEach(function (phone) {
+  describe('Test defferent phone numbers : ' + phone, function () {
+    describe('Using different options: ', function () {
+      tests.forEach(function (item) {
+        it('Should return value in correct pattern: ' + item.pattern, function () {
+          assert.equal((0, _vueE.filter)(phone, item), item.answer);
+        });
+      });
     });
   });
   it('Should return empty string for empty string', function () {
