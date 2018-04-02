@@ -1,8 +1,6 @@
 'use strict';
 
-require('babel-polyfill');
-
-var _vueE = require('../vue-e164.js');
+var _vueE = require('./vue-e164.js');
 
 var assert = require('assert');
 
@@ -61,5 +59,12 @@ describe('Using different options', function () {
     it('Should return value in correct pattern: ' + item.pattern, function () {
       assert.equal((0, _vueE.filter)('79999757065', item), item.answer);
     });
+  });
+  it('Should return empty string for empty string', function () {
+    assert.equal((0, _vueE.filter)('', {
+      plus: true,
+      brackets: false,
+      space: true
+    }), '');
   });
 });

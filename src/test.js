@@ -1,5 +1,4 @@
-import 'babel-polyfill'
-import { filter } from '../vue-e164.js'
+import { filter } from './vue-e164.js'
 const assert = require('assert')
 
 const tests = [
@@ -66,5 +65,12 @@ describe('Using different options', () => {
     it(`Should return value in correct pattern: ${item.pattern}`, () => {
       assert.equal(filter('79999757065', item), item.answer)
     })
+  })
+  it('Should return empty string for empty string', () => {
+      assert.equal(filter('', {
+        plus: true,
+        brackets: false,
+        space: true
+      }), '')
   })
 })

@@ -28,7 +28,8 @@
     "dev": "node build/dev-server.js",
     "build": "npm run build:library",
     "build:library": "node build/build.rollup.js",
-    "test": "mocha ./dist/src/test.js",
+    "test": "babel ./src/test.js --out-file ./dist/test.js --presets=env &&  mocha ./dist/test.js",
+    "test:w": "babel ./src/test.js --out-file ./dist/test.js --presets=env --watch",
     "release": "standard-version"
   },
   "dependencies": {},
