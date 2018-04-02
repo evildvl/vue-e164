@@ -17,26 +17,13 @@ function standart (string/*: string */)/*: string */ {
 
 export function filter (value/*: string */, _options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
   if (!value) return ''
+  let reg = /^(\+)(\d)(\d{2,3})(\d{3})(\d{2})(\d{2})/ig
+  let plus = (_options.plus) ? '+' : ''
+  let brackets = (_options.brackets) ? {l: '(', r: ')'} : {l: '', r: ''}
+  let space = (_options.space) ? ' ' : ''
   let e164/*: string */ = standart(value)
-  if (_options.plus && !_options.brackets && !_options.space) {
-    return e164
-  } else if (!_options.plus && !_options.brackets && !_options.space) {
-    return e164.split('+').join('')
-  } else if (_options.plus && _options.brackets && !_options.space) {
-    return `+${e164.substr(1, 1)}(${e164.substr(2, 3)})${e164.substring(5)}`
-  } else if (_options.plus && !_options.brackets && _options.space) {
-    return `+${e164.substr(1, 1)} ${e164.substr(2, 3)} ${e164.substr(5, 3)} ${e164.substr(8, 2)} ${e164.substr(10, 2)}`
-  } else if (_options.plus && _options.brackets && _options.space) {
-    return `+${e164.substr(1, 1)} (${e164.substr(2, 3)}) ${e164.substr(5, 3)} ${e164.substr(8, 2)} ${e164.substr(10, 2)}`
-  } else if (!_options.plus && _options.brackets && _options.space) {
-    return `${e164.substr(1, 1)} (${e164.substr(2, 3)}) ${e164.substr(5, 3)} ${e164.substr(8, 2)} ${e164.substr(10, 2)}`
-  } else if (!_options.plus && !_options.brackets && _options.space) {
-    return `${e164.substr(1, 1)} ${e164.substr(2, 3)} ${e164.substr(5, 3)} ${e164.substr(8, 2)} ${e164.substr(10, 2)}`
-  } else if (!_options.plus && _options.brackets && !_options.space) {
-    return `${e164.substr(1, 1)}(${e164.substr(2, 3)})${e164.substring(5)}`
-  } else {
-    return ''
-  }
+  let ph = reg.exec(e164)
+  return `${plus}${ph[2]}${space}${brackets.l}${ph[3]}${brackets.r}${space}${ph[4]}${space}${ph[5]}${space}${ph[6]}`
 }
 
 vueE164.install = function (Vue /*: any */, options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
