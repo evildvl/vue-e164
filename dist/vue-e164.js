@@ -1,5 +1,5 @@
 /**
- * vue-e164 v0.0.5
+ * vue-e164 v0.0.6
  * (c) 2018 Stanislav Mihaylov
  * @license MIT
  */

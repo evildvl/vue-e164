@@ -15,7 +15,7 @@ vueE164.install = function (Vue /*: any */, options/*: {plus: boolean, brackets:
     }
     return `+${newString.join('').substring(0, 15)}`
   }
-  function filter (value/*: string */, _options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
+  export function filter (value/*: string */, _options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
     if (!value) return ''
     let e164/*: string */ = standart(value)
     if (_options.plus && !_options.brackets && !_options.space) {
