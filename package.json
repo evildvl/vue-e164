@@ -26,10 +26,10 @@
   "homepage": "spooot.io",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "npm run build:library && npm run build:demo",
-    "build:demo": "node build/build.js",
+    "build": "npm run build:library",
     "build:library": "node build/build.rollup.js",
-    "test": "jest"
+    "test": "mocha ./dist/src/test.js",
+    "release": "standard-version"
   },
   "dependencies": {},
   "devDependencies": {
@@ -37,20 +37,20 @@
     "autoprefixer": "^6.7.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^22.4.3",
     "babel-loader": "^6.2.10",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-polyfill": "^6.13.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "babel-preset-stage-2": "^6.22.0",
-    "babel-register": "^6.22.0",
+    "babel-register": "^6.26.0",
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
@@ -62,9 +62,11 @@
     "file-loader": "^0.11.1",
     "flow-bin": "^0.69.0",
     "friendly-errors-webpack-plugin": "^1.1.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.3",
-    "jest": "^22.4.3",
+    "mocha": "^5.0.5",
     "opn": "^4.0.2",
     "optimize-css-assets-webpack-plugin": "^1.3.0",
     "ora": "^1.2.0",
@@ -75,6 +77,7 @@
     "rollup-plugin-uglify": "^1.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "standard-version": "^4.3.0",
     "url-loader": "^0.5.8",
     "vue": "^2.3.3",
     "vue-loader": "^12.1.0",
@@ -95,5 +98,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
