@@ -6,6 +6,7 @@ const tests = [
     plus: true,
     brackets: true,
     space: true,
+    dash: false,
     answer: '+7 (999) 975 70 65',
     pattern: '+ () _'
   },
@@ -13,6 +14,7 @@ const tests = [
     plus: false,
     brackets: false,
     space: false,
+    dash: false,
     answer: '79999757065',
     pattern: 'all options false'
   },
@@ -20,6 +22,7 @@ const tests = [
     plus: true,
     brackets: false,
     space: false,
+    dash: false,
     answer: '+79999757065',
     pattern: '+'
   },
@@ -27,6 +30,7 @@ const tests = [
     plus: true,
     brackets: true,
     space: false,
+    dash: false,
     answer: '+7(999)9757065',
     pattern: '+ ()'
   },
@@ -34,6 +38,7 @@ const tests = [
     plus: false,
     brackets: true,
     space: true,
+    dash: false,
     answer: '7 (999) 975 70 65',
     pattern: '() _'
   },
@@ -41,6 +46,7 @@ const tests = [
     plus: false,
     brackets: false,
     space: true,
+    dash: false,
     answer: '7 999 975 70 65',
     pattern: '_'
   },
@@ -48,6 +54,7 @@ const tests = [
     plus: false,
     brackets: true,
     space: false,
+    dash: false,
     answer: '7(999)9757065',
     pattern: '()'
   },
@@ -55,8 +62,49 @@ const tests = [
     plus: true,
     brackets: false,
     space: true,
+    dash: false,
     answer: '+7 999 975 70 65',
     pattern: '+ _'
+  },
+  {
+    plus: true,
+    brackets: true,
+    space: true,
+    dash: true,
+    answer: '+7 (999) 975 - 70 - 65',
+    pattern: '+ () _ -'
+  },
+  {
+    plus: true,
+    brackets: true,
+    space: false,
+    dash: true,
+    answer: '+7(999)975-70-65',
+    pattern: '+ () -'
+  },
+  {
+    plus: true,
+    brackets: false,
+    space: true,
+    dash: true,
+    answer: '+7 999 975 - 70 - 65',
+    pattern: '+ _ -'
+  },
+  {
+    plus: false,
+    brackets: true,
+    space: true,
+    dash: true,
+    answer: '7 (999) 975 - 70 - 65',
+    pattern: '() _ -'
+  },
+  {
+    plus: true,
+    brackets: false,
+    space: true,
+    dash: true,
+    answer: '+7 999 975 - 70 - 65',
+    pattern: '+ _ -'
   }
 ]
 
@@ -70,7 +118,8 @@ describe('Using different options', () => {
       assert.equal(filter('', {
         plus: true,
         brackets: false,
-        space: true
+        space: true,
+        dash: false
       }), '')
   })
 })

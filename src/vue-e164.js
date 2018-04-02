@@ -15,15 +15,17 @@ function standart (string/*: string */)/*: string */ {
   return `+${newString.join('').substring(0, 15)}`
 }
 
-export function filter (value/*: string */, _options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
+export function filter (value/*: string */, _options/*: {plus: boolean, brackets: boolean, space: boolean, dash: boolean} */) {
   if (!value) return ''
   let reg = /^(\+)(\d)(\d{2,3})(\d{3})(\d{2})(\d{2})/ig
   let plus = (_options.plus) ? '+' : ''
   let brackets = (_options.brackets) ? {l: '(', r: ')'} : {l: '', r: ''}
   let space = (_options.space) ? ' ' : ''
+  let dash = (_options.dash) ? '-' : ''
   let e164/*: string */ = standart(value)
   let ph = reg.exec(e164)
-  return `${plus}${ph[2]}${space}${brackets.l}${ph[3]}${brackets.r}${space}${ph[4]}${space}${ph[5]}${space}${ph[6]}`
+  /*          +       7      _        (          123       )           _      123      _      -       45     _       -      67  */
+  return `${plus}${ph[2]}${space}${brackets.l}${ph[3]}${brackets.r}${space}${ph[4]}${space}${dash}${(dash) ? space : ''}${ph[5]}${space}${dash}${(dash) ? space : ''}${ph[6]}`
 }
 
 vueE164.install = function (Vue /*: any */, options/*: {plus: boolean, brackets: boolean, space: boolean} */) {
