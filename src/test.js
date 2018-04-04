@@ -7,105 +7,163 @@ const tests = [
     brackets: true,
     space: true,
     dash: false,
+    areaCode: true,
     answer: '+7 (999) 975 70 65',
-    pattern: '+ () _'
+    pattern: '+ C () _'
   },
   {
     plus: false,
     brackets: false,
     space: false,
     dash: false,
+    areaCode: true,
     answer: '79999757065',
-    pattern: 'all options false'
+    pattern: 'C'
   },
   {
     plus: true,
     brackets: false,
     space: false,
     dash: false,
+    areaCode: true,
     answer: '+79999757065',
-    pattern: '+'
+    pattern: '+ C'
   },
   {
     plus: true,
     brackets: true,
     space: false,
     dash: false,
+    areaCode: true,
     answer: '+7(999)9757065',
-    pattern: '+ ()'
+    pattern: '+ C ()'
   },
   {
     plus: false,
     brackets: true,
     space: true,
     dash: false,
+    areaCode: true,
     answer: '7 (999) 975 70 65',
-    pattern: '() _'
+    pattern: 'C () _'
   },
   {
     plus: false,
     brackets: false,
     space: true,
     dash: false,
+    areaCode: true,
     answer: '7 999 975 70 65',
-    pattern: '_'
+    pattern: 'C _'
   },
   {
     plus: false,
     brackets: true,
     space: false,
     dash: false,
+    areaCode: true,
     answer: '7(999)9757065',
-    pattern: '()'
+    pattern: 'C ()'
   },
   {
     plus: true,
     brackets: false,
     space: true,
     dash: false,
+    areaCode: true,
     answer: '+7 999 975 70 65',
-    pattern: '+ _'
+    pattern: '+ C _'
   },
   {
     plus: true,
     brackets: true,
     space: true,
     dash: true,
+    areaCode: true,
     answer: '+7 (999) 975 - 70 - 65',
-    pattern: '+ () _ -'
+    pattern: '+ C () _ -'
   },
   {
     plus: true,
     brackets: true,
     space: false,
     dash: true,
+    areaCode: true,
     answer: '+7(999)975-70-65',
-    pattern: '+ () -'
+    pattern: '+ C () -'
   },
   {
     plus: true,
     brackets: false,
     space: true,
     dash: true,
+    areaCode: true,
     answer: '+7 999 975 - 70 - 65',
-    pattern: '+ _ -'
+    pattern: '+ C _ -'
   },
   {
     plus: false,
     brackets: true,
     space: true,
     dash: true,
+    areaCode: true,
     answer: '7 (999) 975 - 70 - 65',
-    pattern: '() _ -'
+    pattern: '() C _ -'
   },
   {
     plus: true,
     brackets: false,
     space: true,
     dash: true,
+    areaCode: true,
     answer: '+7 999 975 - 70 - 65',
-    pattern: '+ _ -'
-  }
+    pattern: '+ C _ -'
+  },
+    {
+        plus: true,
+        brackets: true,
+        space: true,
+        dash: true,
+        areaCode: false,
+        answer: '(999) 975 - 70 - 65',
+        pattern: '+ () _ -'
+    },
+    {
+        plus: true,
+        brackets: true,
+        space: false,
+        dash: true,
+        areaCode: false,
+        answer: '(999)975-70-65',
+        pattern: '+ () -'
+    },
+    {
+        plus: true,
+        brackets: false,
+        space: true,
+        dash: true,
+        areaCode: false,
+        answer: '999 975 - 70 - 65',
+        pattern: '+ _ -'
+    },
+    {
+        plus: false,
+        brackets: true,
+        space: true,
+        dash: true,
+        areaCode: false,
+        answer: '(999) 975 - 70 - 65',
+        pattern: '() _ -'
+    },
+    {
+        plus: true,
+        brackets: false,
+        space: true,
+        dash: true,
+        areaCode: false,
+        answer: '999 975 - 70 - 65',
+        pattern: '+ _ -'
+    }
 ]
 
 let testPhones = [
@@ -141,7 +199,8 @@ testPhones.forEach((phone) => {
             plus: true,
             brackets: false,
             space: true,
-            dash: false
+            dash: false,
+            areaCode: true,
         }), '')
     })
 })

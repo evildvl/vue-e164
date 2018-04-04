@@ -19,7 +19,8 @@ const options = {
   plus: true,
   brackets: false,
   space: false,
-  dash: false
+  dash: false,
+  areaCode: true
 }
 
 Vue.use(e164, options)
@@ -28,9 +29,14 @@ Vue.use(e164, options)
 ### Options
 
 **plus** {Boolean} - add plus symbol before area code
+
 **brackets** {Boolean}  - add brackets
+
 **space** {Boolean} - split number by space
-**dash** {Boolean} - split number -
+
+**dash** {Boolean} - split number by dash
+
+**areaCode** {Boolean} - set to false to exclude area code and plus
 
 If you want to use E.164 standart, you need this options:
 
@@ -39,26 +45,32 @@ If you want to use E.164 standart, you need this options:
   plus: true,
   brackets: false,
   space: false,
-  dash: false
+  dash: false,
+  areaCode: true
 }
 ```
 
 ### Examples
-|  plus | brackets | space | dash  |         Result         |
-|:-----:|:--------:|:-----:|:-----:|:----------------------:|
-|  true |   true   |  true | false |  `+1 (495) 000 99 88`  |
-| false |   false  | false | false |      `14950009988`     |
-|  true |   false  | false | false | `+14950009988` (E.164) |
-|  true |   true   | false | false |    `+1(495)0009988`    |
-| false |   true   |  true | false |   `1 (495) 000 99 88`  |
-| false |   false  |  true | false |    `1 495 000 99 88`   |
-| false |   true   | false | false |     `1(495)0009988`    |
-|  true |   false  |  true | false |   `+1 495 000 99 88`   |
-|  true |   true   |  true | true  |`+1 (495) 000 - 99 - 88`|
-|  true |   true   | false | true  |   `+1(495)000-99-88`   |
-|  true |   false  |  true | true  | `+1 495 000 - 99 - 88` |
-| false |   true   |  true | true  |`1 (495) 000 - 99 - 88` |
-|  true |   false  |  true | true  | `+1 495 000 - 99 - 88` |
+|  plus | brackets | space | dash  | areaCode |         Result         |
+|:-----:|:--------:|:-----:|:-----:|:--------:|:----------------------:|
+|  true |   true   |  true | false |   true   |  `+1 (495) 000 99 88`  |
+| false |   false  | false | false |   true   |      `14950009988`     |
+|  true |   false  | false | false |   true   | `+14950009988` (E.164) |
+|  true |   true   | false | false |   true   |    `+1(495)0009988`    |
+| false |   true   |  true | false |   true   |   `1 (495) 000 99 88`  |
+| false |   false  |  true | false |   true   |    `1 495 000 99 88`   |
+| false |   true   | false | false |   true   |     `1(495)0009988`    |
+|  true |   false  |  true | false |   true   |   `+1 495 000 99 88`   |
+|  true |   true   |  true | true  |   true   |`+1 (495) 000 - 99 - 88`|
+|  true |   true   | false | true  |   true   |   `+1(495)000-99-88`   |
+|  true |   false  |  true | true  |   true   | `+1 495 000 - 99 - 88` |
+| false |   true   |  true | true  |   true   |`1 (495) 000 - 99 - 88` |
+|  true |   false  |  true | true  |   true   | `+1 495 000 - 99 - 88` |
+|  true |   true   |  true | true  |  false   |  `(495) 000 - 99 - 88` |
+|  true |   true   | false | true  |  false   |    `(495)000-99-88`    |
+|  true |   false  |  true | true  |  false   |   `495 000 - 99 - 88`  |
+| false |   true   |  true | true  |  false   | `(495) 000 - 99 - 88`  |
+|  true |   false  |  true | true  |  false   |  `495 000 - 99 - 88`   |
 
 ### Usage
 
@@ -72,8 +84,15 @@ vue-e164 add `phone` filter, and can be used as any other vue.js filter.
 If you need to use different options for each element, from `v0.0.2` you can use directive `v-phone`:
 ```
 <template>
-  <p v-phone="{ plus: true, brackets: false, space: false, dash: false }">{{ string }}</p>
+  <p v-phone="{ plus: true, brackets: false, space: false, dash: false, areaCode: true }">{{ string }}</p>
 </template>
+```
+
+## Test
+
+```bash
+npm run build
+npm run test
 ```
 
 ## License
