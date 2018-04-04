@@ -1,7 +1,7 @@
 {
   "name": "vue-e164",
   "description": "Vue.js filter for phone formatting with E.164 support",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "main": "dist/vue-e164.js",
   "files": [
