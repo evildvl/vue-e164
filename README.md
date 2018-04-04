@@ -109,7 +109,7 @@ From `v1.2.0` you can use global function `$filterPhone`:
 ...
 methods: {
     applyFilter: function (phoneInput) {
-        return this.filterPhone(phoneInput, {
+        return this.$filterPhone(phoneInput, {
               plus: true,
               brackets: false,
               space: false,
