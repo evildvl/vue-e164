@@ -6,10 +6,25 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 > Vue.js filter for phone formatting with E.164 support
 
+Includes:
+* Filter
+* Global method
+* Directive
+
+[Demo](https://codepen.io/spooot/full/rdrogd/)
+
 ### Setup
+
+NPM
 
 ``` bash
 npm install --save vue-e164
+```
+
+CDN
+
+```html
+<script src="//unpkg.com/vue-e164/dist/vue-e164.js"></script>
 ```
 
 ```javascript
@@ -86,6 +101,24 @@ If you need to use different options for each element, from `v0.0.2` you can use
 <template>
   <p v-phone="{ plus: true, brackets: false, space: false, dash: false, areaCode: true }">{{ string }}</p>
 </template>
+```
+
+From `v1.2.0` you can use global function `$filterPhone`:
+
+```javascript
+...
+methods: {
+    applyFilter: function (phoneInput) {
+        return this.filterPhone(phoneInput, {
+              plus: true,
+              brackets: false,
+              space: false,
+              dash: false,
+              areaCode: true
+        })
+    } 
+}
+...
 ```
 
 ## Test

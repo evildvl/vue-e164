@@ -1,5 +1,10 @@
 import { filter } from './vue-e164.js'
+import Vue from 'vue'
+// eslint-disable-next-line import/no-duplicates
+import Vue164 from './vue-e164'
 const assert = require('assert')
+
+Vue.use(Vue164)
 
 const tests = [
   {
@@ -183,25 +188,31 @@ let testPhones = [
     '7 (999) 975 70 65'
 ]
 
-testPhones.forEach((phone) => {
+describe('Test core function {filter}', () => {
+  testPhones.forEach((phone) => {
     describe(`Test different phone numbers : ${phone}`, () => {
-        describe(`Using different options: `, () => {
-            tests.forEach((item) => {
-                it(`Should return value in correct pattern: ${item.pattern}`, () => {
-                    assert.equal(filter(phone, item), item.answer)
-                })
-            })
-
+      describe(`Using different options `, () => {
+        tests.forEach((item) => {
+          it(`Should return value in correct pattern: ${item.pattern}`, () => {
+            assert.equal(filter(phone, item), item.answer)
+          })
         })
+      })
     })
     it('Should return empty string for empty string', () => {
-        assert.equal(filter('', {
-            plus: true,
-            brackets: false,
-            space: true,
-            dash: false,
-            areaCode: true,
-        }), '')
+      assert.equal(filter('', {
+        plus: true,
+        brackets: false,
+        space: true,
+        dash: false,
+        areaCode: true,
+      }), '')
     })
+  })
 })
 
+describe('Vue global function { $filterPhone } must be equal to core function { filter }', () => {
+  it('function { filter } should be equal to { $filterPhone }', () => {
+    assert.equal(filter.toString(), Vue.prototype.$filterPhone.toString())
+  })
+})

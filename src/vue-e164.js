@@ -35,6 +35,7 @@ vueE164.install = function (Vue /*: any */, options/*: {plus: boolean, brackets:
   Vue.directive('phone', function (el, binding) {
     el.innerHTML = filter(el.innerHTML, binding.value)
   })
+  Vue.prototype.$filterPhone = filter
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
