@@ -3,7 +3,6 @@ var path = require('path')
 var chalk = require('chalk')
 var rollup = require('rollup')
 var babel = require('rollup-plugin-babel')
-var uglify = require('rollup-plugin-uglify')
 
 var version = process.env.VERSION || require('../package.json').version
 var author = process.env.VERSION || require('../package.json').author
@@ -17,17 +16,16 @@ var banner =
   ' */\n'
 
 rollup.rollup({
-    entry: path.resolve(__dirname, '..', 'src/vue-e164.js'),
+    input: path.resolve(__dirname, '..', 'src/vue-e164.js'),
     plugins: [
-      babel(),
-      uglify()
+      babel()
     ]
 })
 .then(bundle => {
     return write(path.resolve(__dirname, '../dist/vue-e164.js'), bundle.generate({
         format: 'umd',
         moduleName: 'vueE164'
-    }).code)
+    }).then((result) => { return result.code }))
 })
 .then(() => {
     console.log(chalk.green('\nAwesome! vue-e164 v' + version + ' builded.\n'))
