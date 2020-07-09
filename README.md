@@ -1,6 +1,5 @@
 # vue-e164
 [![npm version](https://img.shields.io/npm/v/vue-e164.svg?style=flat-square)](https://www.npmjs.org/package/vue-e164)
-[![Pepper](https://pepper.ink/static/badge.svg)](https://pepper.ink)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -10,8 +9,6 @@ Includes:
 * Filter
 * Global method
 * Directive
-
-[Demo](https://codepen.io/spooot/full/rdrogd/)
 
 ### Setup
 
@@ -89,7 +86,7 @@ If you want to use E.164 standart, you need this options:
 
 ### Usage
 
-vue-e164 add `phone` filter, and can be used as any other vue.js filter.
+vue-e164 adds `phone` filter, and can be used as any other vue.js filter.
 ```
 <template>
   <p>{{ string | phone }}</p>
@@ -108,7 +105,7 @@ From `v1.2.0` you can use global function `$filterPhone`:
 ```javascript
 ...
 methods: {
-    applyFilter: function (phoneInput) {
+    applyFilter (phoneInput) {
         return this.$filterPhone(phoneInput, {
               plus: true,
               brackets: false,
@@ -117,6 +114,25 @@ methods: {
               areaCode: true
         })
     } 
+}
+...
+/* Or as computed property */
+...
+data () {
+    return {
+      phone: '70005555555'
+    }
+},
+computed: {
+    filteredPhone () {
+        return this.$filterPhone(this.phone, {
+          plus: true,
+          brackets: false,
+          space: false,
+          dash: false,
+          areaCode: true
+        })
+    }
 }
 ...
 ```
@@ -132,4 +148,4 @@ npm run test
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2018 Stanislav Mihaylov
+Copyright (c) 2018-2020 Stanislav Mihaylov
