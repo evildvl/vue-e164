@@ -3,6 +3,9 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/evildvl/vue-e164.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/evildvl/vue-e164/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/evildvl/vue-e164.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/evildvl/vue-e164/context:javascript)
+
 > Vue.js filter for phone formatting with E.164 support
 
 Includes:
