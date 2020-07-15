@@ -71,7 +71,7 @@
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "ora": "3.4.0",
     "regenerator-runtime": "0.13.5",
-    "rimraf": "2.7.1",
+    "rimraf": "3.0.2",
     "rollup": "2.21.0",
     "semver": "6.3.0",
     "shelljs": "0.8.4",
