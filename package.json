@@ -75,7 +75,7 @@
     "rollup": "2.25.0",
     "semver": "7.3.2",
     "shelljs": "0.8.4",
-    "standard-version": "8.0.2",
+    "standard-version": "9.0.0",
     "url-loader": "4.1.0",
     "vue": "2.6.11",
     "vue-loader": "15.9.3",
