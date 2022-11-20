@@ -68,7 +68,7 @@
     "http-proxy-middleware": "1.0.5",
     "mocha": "8.1.1",
     "opn": "6.0.0",
-    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "optimize-css-assets-webpack-plugin": "5.0.5",
     "ora": "5.0.0",
     "regenerator-runtime": "0.13.7",
     "rimraf": "3.0.2",
