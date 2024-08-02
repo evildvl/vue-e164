@@ -44,7 +44,7 @@
     "@babel/preset-env": "7.11.0",
     "@babel/register": "7.10.5",
     "@rollup/plugin-babel": "5.2.0",
-    "autoprefixer": "9.8.6",
+    "autoprefixer": "10.4.20",
     "chalk": "4.1.0",
     "connect-history-api-fallback": "1.6.0",
     "copy-webpack-plugin": "6.0.3",
