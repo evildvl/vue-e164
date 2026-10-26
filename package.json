@@ -77,7 +77,7 @@
     "shelljs": "0.8.5",
     "standard-version": "9.0.0",
     "url-loader": "4.1.0",
-    "vue": "2.6.11",
+    "vue": "3.0.0",
     "vue-loader": "15.9.3",
     "vue-router": "3.4.3",
     "vue-style-loader": "4.1.2",
